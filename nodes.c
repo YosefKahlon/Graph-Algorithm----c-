@@ -145,13 +145,33 @@ int main()
                 
                 
                         
+            
 
+        };
+        printf("------------------");
+        struct Node **current2=head;
+        
+        while (*current2)
+        {
+            printf("  %d--> \n", (*current2)->id);
+            struct edges **edgeh12 =NULL;
+            edgeh12= (struct edges **)malloc(sizeof(struct edges));
+            (*edgeh12)=((*current2)->edge);
 
+            while ((*edgeh12))
+            {
+                printf("\n%d-->%d W:%d\n", (*current2)->id, (*edgeh12)->dest, (*edgeh12)->weight);
+                edgeh12=&((*edgeh12)->next);
             };
+            current2=&((*current2)->next);
+
+        };
         };
         
         
         
+        printf("----------");
+        //to do insert edge!!
         
     };
     return 0;
