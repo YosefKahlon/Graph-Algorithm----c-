@@ -34,10 +34,41 @@ p = &((*p)->next);
 
 #define head **p
 
-int main(){
+int main (){
+    
+    char ch;
+    char node;
+    scanf("%c",&node);
+    // while (ch!='z'){
+    //     if(ch=='A')
+    //     {
+    //         scanf("%d",&node);
+    //         if(node>0)
+    //         {
+    //        head= creatgrph(node);
+    //         }
 
+        
+        
+    //         struct Node **current=head;
+    //         while(*current)
+    //         {
+    //         printf("  %d--> \n",(*current)->id);
+
+    //         current=&((*current)->next);
+    //         }
+    //     }
+    //     scanf("%c",&ch);
+    //     if(ch=='n')
+    //     {
+    //         printf("need to add edge\n");
+    //     };
+    // }
+    printf("%d",node-48);
+    
     return 0;
 }
+
 // int main(){
 //     // struct Node** head=NULL ;
     
