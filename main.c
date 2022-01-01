@@ -38,7 +38,7 @@ int main (){
     
     char ch;
     char node;
-    scanf("%c",&node);
+    //scanf("%c",&node);
     // while (ch!='z'){
     //     if(ch=='A')
     //     {
@@ -64,7 +64,29 @@ int main (){
     //         printf("need to add edge\n");
     //     };
     // }
-    printf("%d",node-48);
+    //printf("%d",node-48);
+    int num;
+    scanf("%d",&num);
+    printf("num= %d\n",num);
+    int b;
+    b=num;
+    b=b-'0';
+    printf("%d\n",b);
+    // if(b==num){
+    //     printf("true\n");
+    // }else{
+    //     printf("false");
+    // }
+    // int d='n';
+    // printf("%d\n",d);
+    // char aceck =5;
+    // printf("%d\n",aceck);
+    // if(d==aceck){
+    //     printf("true\n");
+    // }else{
+    //     printf("false");
+    // }
+
     
     return 0;
 }
