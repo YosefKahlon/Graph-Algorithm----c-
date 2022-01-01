@@ -59,83 +59,100 @@ int main()
 {
     struct Node **head = NULL;
     head = (struct Node **)malloc(sizeof(struct Node));
-    char ch;
-    int node;
+    char ch='0';
+    int src;
     int numOfNodes;
-    scanf("%c", &ch);
-    while (ch != 'z')
+    // scanf("%c", &ch);
+   
+    while(ch!=EOF)
     {
-        if (ch == 'A')
-        {
-            scanf("%d", &node);
-            numOfNodes = node;
-            if (node > 0)
-            {
-                head = creatgrph(numOfNodes);
-            }
 
+        if(scanf("%c", &ch)!=0&&ch=='A')
+        {
+            
+            scanf("%d",&numOfNodes);
+            head=creatgrph(numOfNodes);
             struct Node **current = head;
             while (*current)
             {
                 printf("  %d--> \n", (*current)->id);
 
                 current = &((*current)->next);
-            }
-        }
-        int nodeEdge;
+            };
+
+        };
+        
         scanf("%c", &ch);
-        scanf("%d", &nodeEdge);
-        while (ch == 'n')
+        
+        while(scanf("%c", &ch)!=0&& ch=='n')
         {
-
-            
-
-            struct Node **current2 = head;
-            while (*current2)
+            scanf("%d",&src);
+            int dest;
+            int weight;
+            while(scanf("%d",&dest)!=0&&scanf("%d",&weight)!=0)
             {
-                char weightu;
-                char destu;
-                int weightu2;
-                int destu2;
-
-                if ((*current2)->id == (nodeEdge))
-
+                struct Node **current2=head;
+                while (*current2)
                 {
-
-                    scanf("%c", &destu);
-                    printf("befor while: %d\n", destu);
-                    scanf("%c", &weightu);
-
-                    destu2 = (int)destu;
-
-                    while (destu != 'n')
+                    if((*current2)->id==src)
                     {
-
-                        destu2 = destu - '0';
-                        printf("destu2= %d\n", destu2);
-
-                        weightu2 = weightu - '0';
-                        printf("weightu2= %d\n", weightu2);
-                        printf("destu2= %d\n", destu2);
                         struct edges *edgeh12 = NULL;
                         edgeh12 = (struct edges *)malloc(sizeof(struct edges));
                         (*current2)->edge = edgeh12;
-                        (*current2)->edge->dest = destu2;
-                        (*current2)->edge->weight = weightu2;
+                        (*current2)->edge->dest = dest;
+                        (*current2)->edge->weight = weight;
                         printf("\n%d-->%d W:%d\n", (*current2)->id, (*current2)->edge->dest, (*current2)->edge->weight);
-                        scanf("%c", &destu);
-                        destu2 = destu;
-                        printf("destu2= %d\n", destu2);
 
-                        scanf("%c", &weightu);
                     };
-                    printf("------------------------------------------");
+                    current2=&((*current2)->next);
                 };
-                current2 = &((*current2)->next);
-            };
+                
+                
+                        
 
-            scanf("%d", &nodeEdge);
+
+            };
+        
+        
         };
-    }
+        if(ch=='B'){
+            printf("CH= %C\n",ch);
+            insertLast(numOfNodes,0,head);
+            numOfNodes++;
+            scanf("%d",&src);
+            printf("src=%d",src);
+            int dest;
+            int weight;
+            while(scanf("%d",&dest)!=0&&scanf("%d",&weight)!=0)
+            {
+                printf("dest=%d  weight=%d",dest,weight);
+                struct Node **current2=head;
+                while (*current2)
+                {
+                    
+                    if((*current2)->id==src)
+                    {
+                        struct edges *edgeh12 = NULL;
+                        edgeh12 = (struct edges *)malloc(sizeof(struct edges));
+                        (*current2)->edge = edgeh12;
+                        (*current2)->edge->dest = dest;
+                        (*current2)->edge->weight = weight;
+                        printf("\n%d-->%d W:%d\n", (*current2)->id, (*current2)->edge->dest, (*current2)->edge->weight);
+
+                    };
+                    current2=&((*current2)->next);
+                };
+                
+                
+                        
+
+
+            };
+        };
+        
+        
+        
+        
+    };
     return 0;
 }
