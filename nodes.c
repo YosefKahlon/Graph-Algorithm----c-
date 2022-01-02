@@ -1,25 +1,27 @@
 #include <stdio.h>
 #include <stdlib.h>
-typedef struct Node
-{
-    int id;
-    int data;
-    struct Node *next;
-    struct edges *edge;
-} Node;
-typedef struct edges
-{
+#include "nodes.h"
+// typedef struct Node
+// {
+//     int id;
+//     int data;
+//     int prev;
+//     struct Node *next;
+//     struct edges *edge;
+// } Node;
+// typedef struct edges
+// {
 
-    int dest;
-    int weight;
-    struct edges *next;
-} edges;
+//     int dest;
+//     int weight;
+//     struct edges *next;
+// } edges;
 
 Node *newNode(int id, int data, Node *next)
 {
     Node *p = (Node *)malloc(sizeof(Node));
-    struct edges *edgeh3 = NULL;
-    edgeh3 = (struct edges *)malloc(sizeof(struct edges));
+    // struct edges *edgeh3 = NULL;
+    // edgeh3 = (struct edges *)malloc(sizeof(struct edges));
     // struct edges **heade3 = NULL;
     // heade3 = (struct edges **)malloc(sizeof(struct edges));
 
@@ -46,6 +48,7 @@ edges *newedge(int dest, int data, edges *next)
     p->next = NULL;
     return p;
 }
+
 void insertEdge(int dest, int data, struct edges **edge)
 {
     struct edges **p = edge;
@@ -78,7 +81,7 @@ Node **creatgrph(int numnode)
 void deleteEdges(struct edges **head_ref)
 {
     // Store head edge
-    struct edges *temp = *head_ref, *prev;
+    struct edges *temp = *head_ref;
 
     // If head node itself holds the key to be deleted
     while (temp)
@@ -92,178 +95,66 @@ void deleteEdges(struct edges **head_ref)
     }
     free(temp); // Free memory
 }
-
-int main()
+void deleteNode(struct Node** head_ref, int key)
 {
-    struct Node **head = NULL;
-    head = (struct Node **)malloc(sizeof(struct Node));
+    // Store head node
+    struct Node *temp = *head_ref, *prev;
     struct edges **headE = NULL;
     headE = (struct edges **)malloc(sizeof(struct edges));
-    char ch = '0';
-    int src;
-    int numOfNodes;
-    // scanf("%c", &ch);
-
-    while (ch != EOF)
-    {
-
-        if (scanf("%c", &ch) != 0 && ch == 'A')
-        {
-
-            scanf("%d", &numOfNodes);
-            head = creatgrph(numOfNodes);
-            struct Node **current = head;
-            while (*current)
-            {
-                printf("  %d--> \n", (*current)->id);
-
-                current = &((*current)->next);
-            };
-        };
-
-        scanf("%c", &ch);
-
-        while (scanf("%c", &ch) != 0 && ch == 'n')
-        {
-            scanf("%d", &src);
-            int dest;
-            int weight;
-            while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
-            {
-                struct Node **current2 = head;
-                while (*current2)
-                {
-                    if ((*current2)->id == src)
-                    {
-                        if ((*current2)->edge == NULL)
-                        {
-                            struct edges *edgeh12 = NULL;
-                            edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                            (*current2)->edge = edgeh12;
-                            (*current2)->edge->dest = dest;
-                            (*current2)->edge->weight = weight;
-                        }
-                        else
-                        {
-                            (*headE) = (*current2)->edge;
-                            insertEdge(dest, weight, headE);
-                        }
-                        // struct edges *edgeh12 = NULL;
-                        // edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                        // (*current2)->edge = edgeh12;
-                        // (*current2)->edge->dest = dest;
-                        // (*current2)->edge->weight = weight;
-                        // printf("TAKALAAA");
-                        // printf("\n%d-->%d W:%d\n", (*current2)->id, (*current2)->edge->dest, (*current2)->edge->weight);
-                    };
-                    current2 = &((*current2)->next);
-                };
-            };
-        };
-        if (ch == 'B')
-        {
-            printf("CH= %C\n", ch);
-            //insertLast(numOfNodes,0,head);
-            // numOfNodes++;
-            while (scanf("%d", &src) != 0)
-            { //printf("src=%d",src);
-                int dest;
-                int weight;
-                int flag = 0;
-                //printf("dest=%d  weight=%d",dest,weight);
-                struct Node **current2 = head;
-                while (*current2)
-                {
-
-                    if ((*current2)->id == src)
-                    {
-                        flag = 1;
-
-                        printf("src= %d dest= %d W:%d", (*current2)->id, dest, weight);
-                        (*headE) = (*current2)->edge;
-                        deleteEdges(headE);
-                        (*current2)->edge = NULL;
-                        // struct edges *edgeh12 = NULL;
-                        // edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                        // (*current2)->edge = edgeh12;
-                        // (*current2)->edge->dest = dest;
-                        // (*current2)->edge->weight = weight;
-                        // printf("\n%d-->%d W:%d\n", (*current2)->id, (*current2)->edge->dest, (*current2)->edge->weight);
-                        // ----------------------------------
-
-                        while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
-                        {
-                            if ((*current2)->edge == NULL)
-                            {
-                                struct edges *edgeh12 = NULL;
-                                edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                                (*current2)->edge = edgeh12;
-                                (*current2)->edge->dest = dest;
-                                (*current2)->edge->weight = weight;
-                            }
-                            else
-                            {
-                                (*headE) = (*current2)->edge;
-                                insertEdge(dest, weight, headE);
-                            };
-                        };
-                    };
-                    current2 = &((*current2)->next);
-
-                };
-                if (flag == 0)
-                {
-                    current2 = head;
-                    insertLast(src, 0, head);
-                    numOfNodes++;
-                    while (*current2)
-                    {
-                        if ((*current2)->id == src)
-                        {
-                            while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
-                            {
-                                printf("src= %d dest= %d W:%d", (*current2)->id, dest, weight);
-                                if ((*current2)->edge == NULL)
-                                {
-                                    struct edges *edgeh12 = NULL;
-                                    edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                                    (*current2)->edge = edgeh12;
-                                    (*current2)->edge->dest = dest;
-                                    (*current2)->edge->weight = weight;
-                                }
-                                else
-                                {
-                                    (*headE) = (*current2)->edge;
-                                    insertEdge(dest, weight, headE);
-                                };
-                                
-                            };
-                        };
-                        current2 = &((*current2)->next);
-                    };
-                };
-            };
-            printf("------------------");
-            struct Node **current2 = head;
-
-            while (*current2)
-            {
-                printf("  %d--> \n", (*current2)->id);
-                struct edges **edgeh12 = NULL;
-                edgeh12 = (struct edges **)malloc(sizeof(struct edges));
-                (*edgeh12) = ((*current2)->edge);
-
-                while ((*edgeh12))
-                {
-                    printf("\n%d-->%d W:%d\n", (*current2)->id, (*edgeh12)->dest, (*edgeh12)->weight);
-                    edgeh12 = &((*edgeh12)->next);
-                };
-                current2 = &((*current2)->next);
-            };
-        };
-
-        printf("----------");
-        //to do insert edge!!
-    };
-    return 0;
+ 
+    // If head node itself holds the key to be deleted
+    if (temp != NULL && temp->id == key) {
+        *head_ref = temp->next; // Changed head
+        
+       // (*headE) = ((temp)->edge);
+       // deleteEdges(headE);
+        
+        free(temp); // free old head
+        return;
+    }
+ 
+    // Search for the key to be deleted, keep track of the
+    // previous node as we need to change 'prev->next'
+    while (temp != NULL && temp->id != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+ 
+    // If key was not present in linked list
+    if (temp == NULL)
+        return;
+ 
+    // Unlink the node from linked list
+    prev->next = temp->next;
+ 
+    free(temp); // Free memory
 }
+void deleteEdgeDest(struct edges** head_ref, int key)
+{
+    // Store head node
+    struct edges *temp = *head_ref, *prev;
+ 
+    // If head node itself holds the key to be deleted
+    if (temp != NULL && temp->dest == key) {
+        *head_ref = temp->next; // Changed head
+        free(temp); // free old head
+        return;
+    }
+ 
+    // Search for the key to be deleted, keep track of the
+    // previous node as we need to change 'prev->next'
+    while (temp != NULL && temp->dest != key) {
+        prev = temp;
+        temp = temp->next;
+    }
+ 
+    // If key was not present in linked list
+    if (temp == NULL)
+        return;
+ 
+    // Unlink the node from linked list
+    prev->next = temp->next;
+ 
+    free(temp); // Free memory
+}
+
