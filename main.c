@@ -1,196 +1,154 @@
-#include <stdio.h>
+#include<stdio.h>
+#include<string.h>
 #include <stdlib.h>
-#include "nodes.h"
+#include "graph.h"
 
-void print(struct Node **head){
-    struct Node **current2 = head;
+int main() {
 
-            while (*current2)
-            {
-                printf("  %d--> \n", (*current2)->id);
-                struct edges **edgeh12 = NULL;
-                edgeh12 = (struct edges **)malloc(sizeof(struct edges));
-                (*edgeh12) = ((*current2)->edge);
 
-                while ((*edgeh12))
-                {
-                    printf("\n%d-->%d W:%d\n", (*current2)->id, (*edgeh12)->dest, (*edgeh12)->weight);
-                    edgeh12 = &((*edgeh12)->next);
-                };
-                current2 = &((*current2)->next);
-            };
-        
-}
-int main ()
-{
-    
-    struct Node **head = NULL;
-    head = (struct Node **)malloc(sizeof(struct Node));
-    struct edges **headE = NULL;
-    headE = (struct edges **)malloc(sizeof(struct edges));
+    node *head = NULL;
+
+
+
+
     char ch = '0';
-    int src;
-    int numOfNodes;
-    
+    int numOfNode;
+    int destNode;
+    int weight;
+    int srcNode;
+    int size;
+    int max_node = 0;
 
-    while (ch != EOF)
-    {
 
-        if (scanf("%c", &ch) != 0 && ch == 'A')
-        {
+    while (scanf("%c", &ch) != 0 &&ch != EOF) {
 
-            scanf("%d", &numOfNodes);
-            head = creatgrph(numOfNodes);
-            struct Node **current = head;
-            while (*current)
-            {
-                printf("  %d--> \n", (*current)->id);
 
-                current = &((*current)->next);
-            };
-        };
+        if ( ch == 'A') {
 
-        scanf("%c", &ch);
+            deleteGraph_cmd(&head);
 
-        while (scanf("%c", &ch) != 0 && ch == 'n')
-        {
-            scanf("%d", &src);
-            int dest;
-            int weight;
-            while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
-            {
-                struct Node **current2 = head;
-                while (*current2)
-                {
-                    if ((*current2)->id == src)
-                    {
-                        if ((*current2)->edge == NULL)
-                        {
-                            struct edges *edgeh12 = NULL;
-                            edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                            (*current2)->edge = edgeh12;
-                            (*current2)->edge->dest = dest;
-                            (*current2)->edge->weight = weight;
-                        }
-                        else
-                        {
-                            (*headE) = (*current2)->edge;
-                            insertEdge(dest, weight, headE);
-                        }
-                        
-                    };
-                    current2 = &((*current2)->next);
-                };
-            };
-        };
-        if (ch == 'B')
-        {
-            printf("CH= %C\n", ch);
-            
-            while (scanf("%d", &src) != 0)
-            { 
-                int dest;
-                int weight;
-                int flag = 0;
-                
-                struct Node **current2 = head;
-                while (*current2)
-                {
+            scanf("%d", &numOfNode);
 
-                    if ((*current2)->id == src)
-                    {
-                        flag = 1;
+            build_graph_cmd(&head, numOfNode); // build the node
+            scanf("%c", &ch);
 
-                        printf("src= %d dest= %d W:%d", (*current2)->id, dest, weight);
-                        (*headE) = (*current2)->edge;
-                        deleteEdges(headE);
-                        (*current2)->edge = NULL;
-                      
 
-                        while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
-                        {
-                            if ((*current2)->edge == NULL)
-                            {
-                                struct edges *edgeh12 = NULL;
-                                edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                                (*current2)->edge = edgeh12;
-                                (*current2)->edge->dest = dest;
-                                (*current2)->edge->weight = weight;
-                            }
-                            else
-                            {
-                                (*headE) = (*current2)->edge;
-                                insertEdge(dest, weight, headE);
-                            };
-                        };
-                    };
-                    current2 = &((*current2)->next);
+            while (scanf("%c", &ch) != 0 && ch == 'n') {
 
-                };
-                if (flag == 0)
-                {
-                    current2 = head;
-                    insertLast(src, 0, head);
-                    numOfNodes++;
-                    while (*current2)
-                    {
-                        if ((*current2)->id == src)
-                        {
-                            while (scanf("%d", &dest) != 0 && scanf("%d", &weight) != 0)
-                            {
-                                printf("src= %d dest= %d W:%d", (*current2)->id, dest, weight);
-                                if ((*current2)->edge == NULL)
-                                {
-                                    struct edges *edgeh12 = NULL;
-                                    edgeh12 = (struct edges *)malloc(sizeof(struct edges));
-                                    (*current2)->edge = edgeh12;
-                                    (*current2)->edge->dest = dest;
-                                    (*current2)->edge->weight = weight;
-                                }
-                                else
-                                {
-                                    (*headE) = (*current2)->edge;
-                                    insertEdge(dest, weight, headE);
-                                };
-                                
-                            };
-                        };
-                        current2 = &((*current2)->next);
-                    };
-                };
-            };
-      
-        
-        };
-        if (ch == 'D')
-        {
-            int Node;
-            scanf("%d",&Node);
-            
-            numOfNodes=numOfNodes-1;
-            struct Node **current = head;
-            // while (*current)
-            // {
-                
-            //     (*headE)=(*current)->edge;
-            //     deleteEdgeDest(headE,Node);
-            //     print(head);
 
-            //     current = &((*current)->next);
-            // };
+                scanf("%d", &srcNode);
+                pnode src = getNode(head, srcNode);
 
-            deleteNode(head,Node);
-            // print(head);
-            // break;
+
+                while (scanf("%d", &destNode) != 0 && scanf("%d", &weight) != 0) {
+
+                    pnode dest = getNode(head, destNode);
+
+
+                    add_edge(src, dest, weight);
+
+                }
+
+
+
+//                    scanf("%c",&ch);
+
+
+
+            }
+        }
+
+//            scanf("%c",&ch); //space
+        pnode src;
+        if (ch == 'B') {
+            //printf("ch is: %c\n", ch);
+
+            scanf("%d", &srcNode);
+            //src = getNode(head, srcNode);
+
+            insert_node_cmd(&head, srcNode);
+            src = getNode(head, srcNode);
+            while (scanf("%d", &destNode) != 0 && scanf("%d", &weight) != 0) {
+
+                pnode dest = getNode(head, destNode);
+
+
+                add_edge(src, dest, weight);
+
+            }
+//            scanf("%c", &ch);
+
+            //printGraph(&head);
+        }
+
+//
+
+//            printGraph(&head);
+//
+        if (ch == 'D') {
+            //printf("the is:%c\n", ch);
+
+            scanf("%d", &srcNode);
+            //printf("srcNode =%d", srcNode);
+            delete_node_cmd(&head, srcNode);
+            //printGraph(&head);
+        }
+//
+//
+        if (ch == 'S') {
+            scanf("%d", &srcNode);
+            pnode src = getNode(head, srcNode);
+            scanf("%d", &destNode);
+            pnode dest = getNode(head, destNode);
+
+            max_node = 0;
+            for (pnode curr = head; curr != NULL; curr = curr->next) {
+
+                if (curr->node_num > max_node) {
+                    max_node = curr->node_num;
+                }
+
+
+            }
+            int len = max_node + 1;
+
+            int ans = shortedPath(&head, src->node_num, dest->node_num, len);
+
+            printf("Dijsktra shortest path: %d\n", ans);
 
         }
-        
-        
-        
-        
-        
-        
-        
-        return 0;
+//
+        if (ch == 'T') {
+                for (pnode curr = head; curr != NULL; curr = curr->next) {
+
+                    if (curr->node_num > max_node) {
+                        max_node = curr->node_num;
+                    }
+
+
+                }
+            scanf("%d", &size);
+            int *num = (int *) malloc(sizeof(int) * size);
+            if (num == NULL) {
+                exit(1);
+            }
+
+            for (int j = 0; j < size; j++) {
+                scanf("%d", &srcNode);
+                num[j] = srcNode;
+            }
+            int len = max_node + 1;
+
+
+            TSP(&head, num, size, len);
+            free(num);
+        }
+
+
+        //scanf("%c", &ch);
     }
+    //
+    deleteGraph_cmd(&head);
+
+    return 0;
 }
