@@ -13,7 +13,7 @@
 
 void removeOutEdge(node *dest) {
 
-    //node out edge
+    //node out of edge
     if (dest->edges == NULL) {
         return;
     }
@@ -36,6 +36,8 @@ void removeInEdge(node *head, int id) {
         return;
     }
     pnode dest = getNode(head, id);
+
+
 
     for (pnode curr = head; curr != NULL; curr = curr->next) {
 

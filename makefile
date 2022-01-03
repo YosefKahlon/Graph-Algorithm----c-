@@ -13,7 +13,6 @@ connections:main.o libclassnode.a
 mat: libclassnode.a
 
 
-
 libclassnode.a: graph.o Node.o Edge.o algo.o
 	$(AR) -rcs -o libclassnode.a graph.o Node.o Edge.o algo.o
 
