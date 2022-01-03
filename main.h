@@ -1,8 +1,0 @@
-//
-// Created by 97252 on 12/29/2021.
-//
-
-#ifndef GRAPH_ALGORITHM_C_MAIN_H
-#define GRAPH_ALGORITHM_C_MAIN_H
-
-#endif //GRAPH_ALGORITHM_C_MAIN_H
