@@ -109,7 +109,8 @@ int main() {
 
             int ans = shortedPath(&head, src->node_num, dest->node_num, len);
 
-            printf("Dijsktra shortest path: %d \n", ans);
+            printf("Dijsktra shortest path: %d ",ans);
+            printf("\n");
 
         }
 
