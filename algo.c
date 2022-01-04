@@ -185,9 +185,9 @@ void TSP(pnode *head, int num[], int size, int max) {
             }
         }
         if(min==INT_MAX) {
-            printf("TSP shortest path: %d\n", -1);
+            printf("TSP shortest path: %d \n", -1);
         }else{
-            printf("TSP shortest path: %d\n", min);
+            printf("TSP shortest path: %d \n", min);
         }
         free(optionAns);
     
@@ -195,7 +195,7 @@ void TSP(pnode *head, int num[], int size, int max) {
 
 
     } else {
-        printf("TSP shortest path: %d\n", 0);
+        printf("TSP shortest path: %d \n", 0);
 
     }
 
