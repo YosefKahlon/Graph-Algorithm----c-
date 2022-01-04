@@ -9,7 +9,7 @@
 
 
 
-typedef struct GRAPH_NODE_ *pnode;;
+typedef struct GRAPH_NODE_ *pnode;
 
 typedef struct edge_ {
     int weight;
@@ -51,6 +51,23 @@ void TSP_cmd(pnode head );
 void add_edge(node *src, pnode dest, int weight);
 
 int shortedPath(node **head, int src, int dest, int len);
+<<<<<<< Updated upstream
+=======
+void TSP(pnode *head, int list[] , int size,int len);
+
+
+
+
+
+
+void printGraph_cmd(pnode head); //for self debug
+void shortsPath_cmd(pnode head);
+void TSP_cmd(pnode head );
+
+
+
+
+>>>>>>> Stashed changes
 
 
 void TSP(pnode *head, int list[] , int size,int len);
