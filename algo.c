@@ -4,11 +4,6 @@
 #include "limits.h"
 
 
-int *missArr(const int pInt[], int size, int j);
-
-
-int *tsp_r(pnode pNode, int *pInt, int *pInt1, int i, int min, int i1, int len);
-
 
 int shortedPath(node **head, int src, int dest, int len) {
     int weight[len];
@@ -124,75 +119,6 @@ int azeret(int n) {
     return n * azeret(n - 1);
 
 }
-//
-//    int shortedPathForTSP(node **head, int src, int dest, int len) {
-//        int weight[len];
-//        int viz[len];
-//        for (int i = 0; i < len; i++) {
-//            weight[i] = INT_MAX;
-//            viz[i] = 0;
-//        }
-//
-//        if (src == dest) {
-//            return 0;
-//        }
-//
-//        weight[src] = 0;
-//
-//        int minIndex;
-//        pnode curr = getNode(*head, src);
-//
-//
-//        while (curr != NULL) {
-//            pedge *headEdge = &(*curr).edges;
-//            viz[curr->node_num] = 2;
-//            if (curr->node_num == dest) {
-//                break;
-//            }
-//            minIndex = -1;
-//
-//            int temp = 0;
-//            while ((*headEdge) != NULL) {
-//                pnode d = getNode(*head, (*headEdge)->endpoint->node_num);
-//                pedge e = (*headEdge);
-//                if (viz[d->node_num] != 2) {
-//                    int w = e->weight;
-//                    temp = w + weight[curr->node_num];
-//
-//                    if (viz[d->node_num] == 0) {
-//                        viz[d->node_num] = 1;
-//                    }
-//                    if (temp <= weight[d->node_num]) {
-//                        weight[d->node_num] = temp;
-//                    }
-//
-//                    int min = weight[d->node_num];
-//                    for (int i = 0; i < len; i++) {
-//
-//                        if (weight[i] <= min && viz[i] == 1) {
-//                            min = weight[i];
-//                            minIndex = i;
-//                        } else if (viz[i] == 1) {
-//                            weight[i] = INT_MAX;
-//                        }
-//                    }
-//                }
-//                (headEdge) = &((*headEdge)->next);
-//            }
-//
-//            if (minIndex == -1) {
-//                return (INT_MAX / 2);
-//            }
-//            else {
-//                (headEdge) = &((*headEdge)->next);
-//            }
-//
-//            curr = getNode(*head, minIndex);
-//        }
-//        int ans = weight[dest];
-//
-//        return ans;
-//    }
 
 
 void TSP(pnode *head, int num[], int size, int max) {
@@ -209,22 +135,13 @@ void TSP(pnode *head, int num[], int size, int max) {
 
         int counter = 0;
 
-//        int *num = (int *) malloc(sizeof(int) * size);
-//        if (num == NULL) {
-//            exit(1);
-//        }
 
-        //int num[size];
         int temp;
         int i;
         int n = size;
         int j;
         int temp_weight = 0;
 
-        // printf("\nEnter a list of numbers to see all combinations:\n");
-//        for (i = 0; i < n; i++) {
-//            num[i] = list[i];
-//        }
 
 
         for (j = 1; j <= n; j++) {
@@ -237,10 +154,10 @@ void TSP(pnode *head, int num[], int size, int max) {
                     int right = left + 1;
 
                     int shortest = shortedPath(head, num[left], num[right], max);
-                    // printf("shortest= %d from: %d to: %d\n", shortest, num[left], num[right]);
+                   
                     if (shortest == -1) {
                         optionAns[counter] = INT_MAX;
-                        // printf("--- inside %d\n", optionAns[counter]);
+                        
                         temp_weight = 0;
 
 
@@ -252,7 +169,6 @@ void TSP(pnode *head, int num[], int size, int max) {
                 }
                 optionAns[counter] = temp_weight;
 
-                // printf("--- outside %d\n", optionAns[counter]);
                 temp_weight = 0;
 
 
@@ -269,12 +185,12 @@ void TSP(pnode *head, int num[], int size, int max) {
             }
         }
         if(min==INT_MAX) {
-            printf("TSP shortest path: %d \n", -1);
+            printf("TSP shortest path: %d\n", -1);
         }else{
-            printf("TSP shortest path: %d \n", min);
+            printf("TSP shortest path: %d\n", min);
         }
         free(optionAns);
-        // free(num);
+    
 
 
 

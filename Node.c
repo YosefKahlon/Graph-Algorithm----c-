@@ -33,7 +33,7 @@ void insert_node_cmd(node **head, int id) {
         // malloc check
         new_node = (node *) malloc(sizeof(node));
         if (new_node == NULL) {
-            exit(1); //the system not provide memory
+            exit(1); //The system dose not provide memory
         }
 
         new_node->next = NULL;
@@ -49,7 +49,7 @@ void insert_node_cmd(node **head, int id) {
         curr->next = new_node;
 
     } else { // node is exists so need to remove all the out edge
-        printf("node has been in the graph \n");
+        //printf("node has been in the graph \n");
         removeOutEdge(new_node);
     }
 
