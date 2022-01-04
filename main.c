@@ -18,7 +18,8 @@ int main() {
     int srcNode;
     int size;
     int max_node = 0;
-
+    pnode src=NULL;
+    pnode dest=NULL;
 
     //while (scanf("%c", &ch) != 0 &&ch != EOF) {
         while (scanf("%c", &ch) != EOF) {
@@ -37,18 +38,20 @@ int main() {
 
 
                 scanf("%d", &srcNode);
-                pnode src = getNode(head, srcNode);
+                src = getNode(head, srcNode);
 
 
                 while (scanf("%d", &destNode) != 0 && scanf("%d", &weight) != 0) {
 
-                    pnode dest = getNode(head, destNode);
+                    dest = getNode(head, destNode);
 
 
                     add_edge(src, dest, weight);
+                    
+                    
 
                 }
-
+                
 
 
 
@@ -59,7 +62,7 @@ int main() {
         }
 
 
-        pnode src;
+        
         if (ch == 'B') {
         
 
@@ -70,13 +73,14 @@ int main() {
             src = getNode(head, srcNode);
             while (scanf("%d", &destNode) != 0 && scanf("%d", &weight) != 0) {
 
-                pnode dest = getNode(head, destNode);
+                dest = getNode(head, destNode);
 
 
                 add_edge(src, dest, weight);
+                
 
             }
-
+            
 
         }
 
@@ -92,9 +96,9 @@ int main() {
 
         if (ch == 'S') {
             scanf("%d", &srcNode);
-            pnode src = getNode(head, srcNode);
+            src = getNode(head, srcNode);
             scanf("%d", &destNode);
-            pnode dest = getNode(head, destNode);
+            dest = getNode(head, destNode);
 
             max_node = 0;
             for (pnode curr = head; curr != NULL; curr = curr->next) {
@@ -145,6 +149,6 @@ int main() {
     }
     // free the memory of the graph
     deleteGraph_cmd(&head);
-
+    
     return 0;
 }

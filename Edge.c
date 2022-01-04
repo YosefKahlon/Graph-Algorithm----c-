@@ -83,7 +83,10 @@ void add_edge(node *src, pnode dest, int weight) {
             curr = curr->next;
         }
         curr->next = new_edge;
+        
     }
+    //free(curr);
+   
 
 
 }

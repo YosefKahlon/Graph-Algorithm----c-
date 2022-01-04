@@ -23,6 +23,8 @@ void deleteGraph_cmd(pnode *head)
         free(temp);
     }
     free(curr);
+    
+    
 }
 
 void build_graph_cmd(pnode *head, int size)
@@ -52,6 +54,7 @@ void build_graph_cmd(pnode *head, int size)
         *curr = newNode;
         curr = &(*newNode).next;
     }
+    
 }
 
 void printGraph(pnode *head)
