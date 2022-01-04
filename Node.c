@@ -47,12 +47,12 @@ void insert_node_cmd(node **head, int id) {
             curr = curr->next;
         }
         curr->next = new_node;
-
+        free(curr);
     } else { // node is exists so need to remove all the out edge
         //printf("node has been in the graph \n");
         removeOutEdge(new_node);
     }
-
+    
 }
 
 
@@ -96,6 +96,7 @@ void delete_node_cmd(node **head, int id) {
 
     // Unlink the node from linked list
     prev->next = temp->next;
+  
 
     free(temp); // Free memory
 
