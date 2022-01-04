@@ -20,8 +20,8 @@ int main() {
     int max_node = 0;
 
 
-    while (scanf("%c", &ch) != 0 &&ch != EOF) {
-
+    //while (scanf("%c", &ch) != 0 &&ch != EOF) {
+        while (scanf("%c", &ch) != EOF) {
 
         if ( ch == 'A') {
 
