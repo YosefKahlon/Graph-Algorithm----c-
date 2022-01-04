@@ -36,4 +36,4 @@ main.o: main.c graph.h
 .PHONY: clean all
 
 clean:
-		rm -f *.o *.a connections
+		rm -f *.o *.a graph
