@@ -61,7 +61,8 @@ int main() {
 
         pnode src;
         if (ch == 'B') {
-        
+          
+           
 
             scanf("%d", &srcNode);
            
@@ -76,7 +77,7 @@ int main() {
                 add_edge(src, dest, weight);
 
             }
-
+        
 
         }
 

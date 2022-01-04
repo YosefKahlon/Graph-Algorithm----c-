@@ -9,13 +9,14 @@ void deleteGraph_cmd(pnode *head)
     pnode curr = *head;
     if (curr == NULL)
     {
+       
         return;
     }
 
     while (curr->next != NULL)
     {
         while (curr->edges != NULL)
-        {
+        {   
             removeOutEdge(curr);
         }
         pnode temp = curr;
@@ -23,6 +24,7 @@ void deleteGraph_cmd(pnode *head)
         free(temp);
     }
     free(curr);
+
 }
 
 void build_graph_cmd(pnode *head, int size)

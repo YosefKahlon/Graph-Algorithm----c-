@@ -28,6 +28,7 @@ void removeOutEdge(node *dest) {
     }
 
     dest->edges = NULL;
+  
 
 }
 
@@ -48,6 +49,8 @@ void removeInEdge(node *head, int id) {
                 *pointerToCurrEdge = currEdge->next;
                 free(currEdge);
                 currEdge = *pointerToCurrEdge;
+         
+             
             } else {
                 pointerToCurrEdge = &currEdge->next;
                 currEdge = currEdge->next;
@@ -56,6 +59,7 @@ void removeInEdge(node *head, int id) {
 
 
         }
+      
 
     }
 
