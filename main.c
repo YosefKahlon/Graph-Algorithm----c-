@@ -51,20 +51,20 @@ int main() {
 
 
 
-//                    scanf("%c",&ch);
+
 
 
 
             }
         }
 
-//            scanf("%c",&ch); //space
+
         pnode src;
         if (ch == 'B') {
-            //printf("ch is: %c\n", ch);
+        
 
             scanf("%d", &srcNode);
-            //src = getNode(head, srcNode);
+           
 
             insert_node_cmd(&head, srcNode);
             src = getNode(head, srcNode);
@@ -76,25 +76,20 @@ int main() {
                 add_edge(src, dest, weight);
 
             }
-//            scanf("%c", &ch);
 
-            //printGraph(&head);
+
         }
 
-//
 
-//            printGraph(&head);
-//
         if (ch == 'D') {
-            //printf("the is:%c\n", ch);
+         
 
             scanf("%d", &srcNode);
-            //printf("srcNode =%d", srcNode);
+       
             delete_node_cmd(&head, srcNode);
-            //printGraph(&head);
+     
         }
-//
-//
+
         if (ch == 'S') {
             scanf("%d", &srcNode);
             pnode src = getNode(head, srcNode);
@@ -117,7 +112,7 @@ int main() {
             printf("Dijsktra shortest path: %d\n", ans);
 
         }
-//
+
         if (ch == 'T') {
                 for (pnode curr = head; curr != NULL; curr = curr->next) {
 
@@ -145,9 +140,9 @@ int main() {
         }
 
 
-        //scanf("%c", &ch);
+    
     }
-    //
+    // free the memory of the graph
     deleteGraph_cmd(&head);
 
     return 0;
