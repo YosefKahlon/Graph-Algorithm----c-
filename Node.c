@@ -91,9 +91,10 @@ void delete_node_cmd(node **head, int id) {
     }
 
     // If key was not present in linked list
-    if (temp == NULL)
-        return;
-
+    // if (temp == NULL){
+ 
+    //     return;
+    // }
     // Unlink the node from linked list
     prev->next = temp->next;
 

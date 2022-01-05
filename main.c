@@ -46,6 +46,10 @@ int main() {
 
 
                     add_edge(src, dest, weight);
+<<<<<<< Updated upstream
+=======
+                    
+>>>>>>> Stashed changes
 
                 }
 
@@ -74,6 +78,10 @@ int main() {
 
 
                 add_edge(src, dest, weight);
+<<<<<<< Updated upstream
+=======
+                   
+>>>>>>> Stashed changes
 
             }
 //            scanf("%c", &ch);

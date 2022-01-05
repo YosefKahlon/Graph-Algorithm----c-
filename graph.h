@@ -21,8 +21,11 @@ typedef struct edge_ {
 typedef struct GRAPH_NODE_ {
     int node_num;
     pedge edges;
+<<<<<<< Updated upstream
     int weight;
     int color;
+=======
+>>>>>>> Stashed changes
     struct GRAPH_NODE_ *next;
 } node, *pnode;
 
