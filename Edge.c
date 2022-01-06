@@ -77,22 +77,20 @@ void add_edge(node *src, pnode dest, int weight) {
     new_edge->next = NULL;
 
 
-    edge *curr = src->edges;
-    if (curr == NULL) {
+    
+    if (src->edges == NULL) {
+        
         src->edges = new_edge;
         
     } else {
+        pedge curr = src->edges;
         while (curr->next != NULL) {
-            curr = curr->next;
+           
+            curr = &(*curr->next);
         }
         curr->next = new_edge;
     }
-<<<<<<< Updated upstream
-=======
-    
-    //free(curr);
-   
->>>>>>> Stashed changes
+
 
     }
 }
