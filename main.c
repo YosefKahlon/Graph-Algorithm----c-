@@ -23,9 +23,11 @@ int main() {
 
 
 
-    //while (scanf("%c", &ch) != 0 &&ch != EOF) {
+    
         while (scanf("%c", &ch) != EOF) {
 
+
+//Add new node with edge to the graph 
         if ( ch == 'A') {
 
             deleteGraph_cmd(&head);
@@ -63,7 +65,7 @@ int main() {
         }
 
 
-        
+        //Add a new node or delete the outgoing edge if any
         if (ch == 'B') {
         
 
@@ -85,7 +87,7 @@ int main() {
 
         }
 
-
+//Delete node from the graph
         if (ch == 'D') {
          
 
@@ -94,7 +96,7 @@ int main() {
             delete_node_cmd(&head, srcNode);
      
         }
-
+// find the shorted Path btween src to dest
         if (ch == 'S') {
             scanf("%d", &srcNode);
             src = getNode(head, srcNode);
@@ -118,7 +120,7 @@ int main() {
             printf("\n");
 
         }
-
+// find the distance of the best path of the given node list 
         if (ch == 'T') {
                 for (pnode curr = head; curr != NULL; curr = curr->next) {
 

@@ -63,13 +63,7 @@ void delete_node_cmd(node **head, int id) {
     pnode src = getNode(*head, id);
     removeOutEdge(src);
 
-//    for (pnode curr = *head; curr->next != NULL; curr = curr->next) {
-//        if (curr->next->node_num == id) {
-//            pnode removeNode = curr->next;
-//            curr->next = curr->next->next;
-//            free(removeNode);
-//        }
-//    }
+
     pnode temp= *head;
     pnode prev=*head ;
 
@@ -78,8 +72,7 @@ void delete_node_cmd(node **head, int id) {
     if (temp != NULL && temp->node_num == id) {
         *head = temp->next; // Changed head
 
-        // (*headE) = ((temp)->edge);ZZ
-        // deleteEdges(headE);
+       
 
         free(temp); // free old head
         
