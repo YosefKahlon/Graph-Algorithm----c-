@@ -76,9 +76,14 @@ int main() {
                 add_edge(src, dest, weight);
 
             }
+<<<<<<< Updated upstream
 //            scanf("%c", &ch);
 
             //printGraph(&head);
+=======
+            
+            
+>>>>>>> Stashed changes
         }
 
 //

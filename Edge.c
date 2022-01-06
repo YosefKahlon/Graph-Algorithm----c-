@@ -15,7 +15,7 @@ void removeOutEdge(node *dest) {
 
     //node out of edge
     if (dest->edges == NULL) {
-        return;
+        exit(1);
     }
 
     edge *curr = dest->edges;
@@ -26,6 +26,7 @@ void removeOutEdge(node *dest) {
         free(remove);
 
     }
+    
 
     dest->edges = NULL;
 
@@ -63,10 +64,11 @@ void removeInEdge(node *head, int id) {
 }
 
 void add_edge(node *src, pnode dest, int weight) {
-
+    if(src!=NULL&&dest!=NULL){
     pedge new_edge = (pedge) malloc(sizeof(edge));
     if (new_edge == NULL) {
-        return;
+        free(new_edge);
+        exit(1);
     }
 
 
@@ -78,14 +80,21 @@ void add_edge(node *src, pnode dest, int weight) {
     edge *curr = src->edges;
     if (curr == NULL) {
         src->edges = new_edge;
+        
     } else {
         while (curr->next != NULL) {
             curr = curr->next;
         }
         curr->next = new_edge;
     }
+<<<<<<< Updated upstream
+=======
+    
+    //free(curr);
+   
+>>>>>>> Stashed changes
 
-
+    }
 }
 
 
