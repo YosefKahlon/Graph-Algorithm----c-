@@ -65,7 +65,7 @@ void removeInEdge(node *head, int id) {
 
 
 }
-
+//A 4 n 0 2 5 3 3 n 2 0 4 1 1 n 1 3 7 0 2 n 3 T 3 2 1 3 B 5 0 4 2 1 B 2 1 3 5 1 T 3 2 1 3 D 2 T 2 3 0
 void add_edge(node *src, pnode dest, int weight) {
 
     pedge new_edge = (pedge) malloc(sizeof(edge));
@@ -79,18 +79,21 @@ void add_edge(node *src, pnode dest, int weight) {
     new_edge->next = NULL;
 
 
-    edge *curr = src->edges;
-    if (curr == NULL) {
-        src->edges = new_edge;
+   
+    if (src->edges== NULL) {
+        src->edges = new_edge; 
     } else {
+         pedge curr = src->edges;
         while (curr->next != NULL) {
-            curr = curr->next;
+            curr = &(*curr->next);
         }
         curr->next = new_edge;
         
     }
-    //free(curr);
-   
+    
+
+    
+    
 
 
 }

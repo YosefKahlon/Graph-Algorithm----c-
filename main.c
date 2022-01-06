@@ -21,6 +21,8 @@ int main() {
     pnode src=NULL;
     pnode dest=NULL;
 
+
+
     //while (scanf("%c", &ch) != 0 &&ch != EOF) {
         while (scanf("%c", &ch) != EOF) {
 
@@ -47,7 +49,6 @@ int main() {
 
 
                     add_edge(src, dest, weight);
-                    
                     
 
                 }
@@ -76,8 +77,8 @@ int main() {
                 dest = getNode(head, destNode);
 
 
-                add_edge(src, dest, weight);
-                
+            add_edge(src, dest, weight);
+               
 
             }
             

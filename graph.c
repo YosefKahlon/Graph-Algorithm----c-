@@ -12,7 +12,7 @@ void deleteGraph_cmd(pnode *head)
         return;
     }
 
-    while (curr->next != NULL)
+    while (curr != NULL)
     {
         while (curr->edges != NULL)
         {
@@ -23,6 +23,7 @@ void deleteGraph_cmd(pnode *head)
         free(temp);
     }
     free(curr);
+
     
     
 }
