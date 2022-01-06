@@ -4,10 +4,10 @@ OBJECT_MAIN=main.o
 OBJECT_LIB=NumClass.o
 FLAGS=-Wall -g
 
-all: mat connections
+all: mat graph
 
-connections:main.o libclassnode.a
-	$(CC) $(FLAGS) -o connections main.o libclassnode.a
+graph:main.o libclassnode.a
+	$(CC) $(FLAGS) -o graph main.o libclassnode.a
 
 
 mat: libclassnode.a
@@ -36,4 +36,4 @@ main.o: main.c graph.h
 .PHONY: clean all
 
 clean:
-		rm -f *.o *.a connections
+		rm -f *.o *.a graph

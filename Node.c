@@ -26,14 +26,14 @@ node *getNode(node *head, int id) {
 
 
 void insert_node_cmd(node **head, int id) {
-
+    node *curr = *head;
     //If already exists
     node *new_node = getNode(*head, id);
     if (new_node == NULL) { // create new node
         // malloc check
         new_node = (node *) malloc(sizeof(node));
         if (new_node == NULL) {
-            exit(1); //the system not provide memory
+            exit(1); //The system dose not provide memory
         }
 
         new_node->next = NULL;
@@ -42,17 +42,19 @@ void insert_node_cmd(node **head, int id) {
 
 
         //find a spot for the new node
-        node *curr = *head;
+       
         while (curr->next != NULL) {
             curr = curr->next;
+            
         }
         curr->next = new_node;
-
+        
     } else { // node is exists so need to remove all the out edge
-        printf("node has been in the graph \n");
+        //printf("node has been in the graph \n");
         removeOutEdge(new_node);
     }
-
+    
+    
 }
 
 
@@ -61,14 +63,8 @@ void delete_node_cmd(node **head, int id) {
     pnode src = getNode(*head, id);
     removeOutEdge(src);
 
-//    for (pnode curr = *head; curr->next != NULL; curr = curr->next) {
-//        if (curr->next->node_num == id) {
-//            pnode removeNode = curr->next;
-//            curr->next = curr->next->next;
-//            free(removeNode);
-//        }
-//    }
-    pnode temp = *head;
+
+    pnode temp= *head;
     pnode prev=*head ;
 
 
@@ -76,10 +72,11 @@ void delete_node_cmd(node **head, int id) {
     if (temp != NULL && temp->node_num == id) {
         *head = temp->next; // Changed head
 
-        // (*headE) = ((temp)->edge);ZZ
-        // deleteEdges(headE);
+       
 
         free(temp); // free old head
+        
+        
         return;
     }
 
@@ -98,5 +95,7 @@ void delete_node_cmd(node **head, int id) {
     prev->next = temp->next;
 
     free(temp); // Free memory
+    
+    
 
 }

@@ -29,6 +29,7 @@ void removeOutEdge(node *dest) {
     
 
     dest->edges = NULL;
+  
 
 }
 
@@ -49,6 +50,8 @@ void removeInEdge(node *head, int id) {
                 *pointerToCurrEdge = currEdge->next;
                 free(currEdge);
                 currEdge = *pointerToCurrEdge;
+         
+             
             } else {
                 pointerToCurrEdge = &currEdge->next;
                 currEdge = currEdge->next;
@@ -57,6 +60,7 @@ void removeInEdge(node *head, int id) {
 
 
         }
+      
 
     }
 
@@ -77,6 +81,7 @@ void add_edge(node *src, pnode dest, int weight) {
     new_edge->next = NULL;
 
 
+<<<<<<< HEAD
     
     if (src->edges == NULL) {
         
@@ -86,10 +91,23 @@ void add_edge(node *src, pnode dest, int weight) {
         pedge curr = src->edges;
         while (curr->next != NULL) {
            
+=======
+   
+    if (src->edges== NULL) {
+        src->edges = new_edge; 
+    } else {
+         pedge curr = src->edges;
+        while (curr->next != NULL) {
+>>>>>>> master
             curr = &(*curr->next);
         }
         curr->next = new_edge;
+        
     }
+    
+
+    
+    
 
 
     }

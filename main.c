@@ -18,11 +18,16 @@ int main() {
     int srcNode;
     int size;
     int max_node = 0;
+    pnode src=NULL;
+    pnode dest=NULL;
 
 
-    while (scanf("%c", &ch) != 0 &&ch != EOF) {
+
+    
+        while (scanf("%c", &ch) != EOF) {
 
 
+//Add new node with edge to the graph 
         if ( ch == 'A') {
 
             deleteGraph_cmd(&head);
@@ -37,67 +42,69 @@ int main() {
 
 
                 scanf("%d", &srcNode);
-                pnode src = getNode(head, srcNode);
+                src = getNode(head, srcNode);
 
 
                 while (scanf("%d", &destNode) != 0 && scanf("%d", &weight) != 0) {
 
-                    pnode dest = getNode(head, destNode);
+                    dest = getNode(head, destNode);
 
 
                     add_edge(src, dest, weight);
+                    
 
                 }
+                
 
 
 
-//                    scanf("%c",&ch);
 
 
 
             }
         }
 
-//            scanf("%c",&ch); //space
-        pnode src;
+
+        //Add a new node or delete the outgoing edge if any
         if (ch == 'B') {
-            //printf("ch is: %c\n", ch);
+        
 
             scanf("%d", &srcNode);
-            //src = getNode(head, srcNode);
+           
 
             insert_node_cmd(&head, srcNode);
             src = getNode(head, srcNode);
             while (scanf("%d", &destNode) != 0 && scanf("%d", &weight) != 0) {
 
-                pnode dest = getNode(head, destNode);
+                dest = getNode(head, destNode);
 
 
-                add_edge(src, dest, weight);
+            add_edge(src, dest, weight);
+               
 
             }
+<<<<<<< HEAD
+=======
+            
+>>>>>>> master
 
         }
 
-//
-
-//            printGraph(&head);
-//
+//Delete node from the graph
         if (ch == 'D') {
-            //printf("the is:%c\n", ch);
+         
 
             scanf("%d", &srcNode);
-            //printf("srcNode =%d", srcNode);
+       
             delete_node_cmd(&head, srcNode);
-            //printGraph(&head);
+     
         }
-//
-//
+// find the shorted Path btween src to dest
         if (ch == 'S') {
             scanf("%d", &srcNode);
-            pnode src = getNode(head, srcNode);
+            src = getNode(head, srcNode);
             scanf("%d", &destNode);
-            pnode dest = getNode(head, destNode);
+            dest = getNode(head, destNode);
 
             max_node = 0;
             for (pnode curr = head; curr != NULL; curr = curr->next) {
@@ -112,10 +119,11 @@ int main() {
 
             int ans = shortedPath(&head, src->node_num, dest->node_num, len);
 
-            printf("Dijsktra shortest path: %d\n", ans);
+            printf("Dijsktra shortest path: %d ",ans);
+            printf("\n");
 
         }
-//
+// find the distance of the best path of the given node list 
         if (ch == 'T') {
                 for (pnode curr = head; curr != NULL; curr = curr->next) {
 
@@ -143,10 +151,10 @@ int main() {
         }
 
 
-        //scanf("%c", &ch);
+    
     }
-    //
+    // free the memory of the graph
     deleteGraph_cmd(&head);
-
+    
     return 0;
 }
